@@ -7,7 +7,7 @@ const links = {
     resume: "/JoeyCappsResume.pdf",
 };
 
-const skills = ["Python", "JavaScript", "React", "Node.js", "SQL", "Azure", "C", "Java"];
+const skills = ["Python", "JavaScript", "React", "Node.js", "SQL", "Azure", "C", "C++", "Java"];
 
 const resumeEducation = [
     {
@@ -32,7 +32,7 @@ const resumeExperience = [
         org: "Amazon Web Services",
         date: "May 2026 - August 2026",
         location: "Seattle, WA",
-        bullets: ["Joining the Elastic Block Store (EBS) team for an SDE internship at AWS."],
+        bullets: ["Joining the Elastic Block Store (EBS) team for an SDE internship at AWS using C++"],
     },
     {
         title: "Founding Software Engineer",
@@ -388,10 +388,10 @@ function App() {
     }, [isDark]);
 
     return (
-        <div className="min-h-screen bg-[#faf8f4] text-cougar dark:bg-[#141414] dark:text-ink-100">
+        <div id="home" className="min-h-screen bg-[#faf8f4] text-cougar dark:bg-[#141414] dark:text-ink-100">
             <Header isDark={isDark} onToggleTheme={() => setIsDark((value) => !value)} />
 
-            <main id="home">
+            <main>
                 <section className="section grid items-center gap-10 pt-8 lg:min-h-[calc(100vh-82px)] lg:grid-cols-[1.04fr_0.96fr] lg:gap-20 lg:pt-9">
                     <div>
                         <p className="eyebrow">Computer Science Graduate Student</p>
