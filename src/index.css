@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background:
+      radial-gradient(circle at top left, rgba(152, 30, 50, 0.16), transparent 28rem),
+      linear-gradient(135deg, rgba(94, 106, 113, 0.12), transparent 34rem);
+  }
+}
+
+@layer components {
+  .section {
+    @apply mx-auto w-[min(1120px,calc(100%-24px))] py-14 sm:w-[min(1120px,calc(100%-32px))] sm:py-24;
+  }
+
+  .eyebrow {
+    @apply mb-3 text-xs font-extrabold uppercase;
+    color: #981e32;
+  }
+
+  .dark .eyebrow {
+    color: #e7a4af;
+  }
+
+  .heading {
+    @apply mb-5 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-none;
+  }
+}
