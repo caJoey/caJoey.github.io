@@ -18,6 +18,4 @@ npm run build
 
 The site is available at:
 
-```text
 [https://caJoey.github.io](https://caJoey.github.io)
-```
