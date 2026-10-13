@@ -10,7 +10,7 @@
 
   body {
     margin: 0;
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: Frutiger, "Frutiger LT Std", "Frutiger Neue", Arial, sans-serif;
     overflow-x: hidden;
   }
 
@@ -23,6 +23,15 @@
     background:
       radial-gradient(circle at top left, rgba(152, 30, 50, 0.16), transparent 28rem),
       linear-gradient(135deg, rgba(94, 106, 113, 0.12), transparent 34rem);
+  }
+
+  html.aero body {
+    background: linear-gradient(145deg, #d8fbff 0%, #91e1f5 48%, #d3f8ff 100%);
+    color: #123f58;
+  }
+
+  html.aero body::before {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.38), transparent 52%);
   }
 }
 
@@ -43,4 +52,273 @@
   .heading {
     @apply mb-5 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-none;
   }
+}
+
+.theme-aero {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #d8fbff 0%, #91e1f5 48%, #d3f8ff 100%) !important;
+  background-attachment: fixed !important;
+  color: #123f58;
+}
+
+.theme-aero > header {
+  position: sticky;
+  z-index: 3;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none !important;
+}
+
+.aero-bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aero-bubbles span {
+  position: absolute;
+  bottom: calc(-1 * var(--bubble-size));
+  left: var(--bubble-x);
+  width: var(--bubble-size);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.05) 58%, rgba(66, 178, 207, 0.08));
+  box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.42), 0 0 10px rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  animation: aero-bubble-rise var(--bubble-duration) ease-in-out var(--bubble-delay) infinite;
+}
+
+.bubble-toggle-icon {
+  width: 27px;
+  height: 27px;
+  filter: drop-shadow(0 1px 2px rgba(12, 88, 111, 0.24));
+}
+
+.aero-bubbles span::after {
+  position: absolute;
+  top: 19%;
+  left: 24%;
+  width: 16%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.62);
+  content: "";
+}
+
+.aero-bubbles--prominent span {
+  top: var(--bubble-y);
+  bottom: auto;
+  pointer-events: none;
+  cursor: pointer;
+  transition: opacity 150ms ease-out, scale 150ms ease-out;
+  border-width: 2px;
+  border-color: rgba(255, 255, 255, 0.9);
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.12) 58%, rgba(41, 157, 191, 0.18));
+  box-shadow: inset 2px 2px 7px rgba(255, 255, 255, 0.72), 0 0 18px rgba(255, 255, 255, 0.36);
+  animation-name: aero-bubble-rise-prominent;
+}
+
+.aero-bubbles--prominent span:focus-visible {
+  outline: 3px solid #075b7a;
+  outline-offset: 3px;
+}
+
+.aero-bubbles--prominent span.is-popped {
+  opacity: 0 !important;
+  scale: 1.55;
+  pointer-events: none;
+}
+
+.aero-bubbles--prominent {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.aero-bubbles--prominent span::after {
+  width: 21%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.duck-game-area:fullscreen,
+.duck-game-area:-webkit-full-screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  aspect-ratio: auto;
+  z-index: 9999;
+  place-items: center;
+  overflow: hidden;
+  background-color: #79d9ee;
+  background-image: linear-gradient(135deg, #d9fbff 0%, #79d9ee 58%, #20a5cf 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: min(100vw, 100vh) min(100vw, 100vh);
+}
+
+.duck-game-area:fullscreen .duck-game-board,
+.duck-game-area:-webkit-full-screen .duck-game-board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100vw, 100vh);
+  height: min(100vw, 100vh);
+  max-width: none;
+  border-radius: clamp(14px, 2vw, 28px);
+  box-shadow: 0 24px 72px rgba(7, 91, 133, 0.2), 0 0 48px rgba(255, 255, 255, 0.34);
+  transform: translate(-50%, -50%);
+}
+
+.duck-game-area:fullscreen::backdrop,
+.duck-game-area:-webkit-full-screen::backdrop {
+  background: #79d9ee;
+}
+
+@supports (height: 100dvh) {
+  .duck-game-area:fullscreen,
+  .duck-game-area:-webkit-full-screen {
+    height: 100dvh;
+  }
+
+  .duck-game-area:fullscreen .duck-game-board,
+  .duck-game-area:-webkit-full-screen .duck-game-board {
+    width: min(100vw, 100dvh);
+    height: min(100vw, 100dvh);
+  }
+
+  .duck-game-area:fullscreen,
+  .duck-game-area:-webkit-full-screen {
+    background-size: min(100vw, 100dvh) min(100vw, 100dvh);
+  }
+}
+
+.game-result-card {
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 35, 52, 0.9);
+}
+
+@keyframes aero-bubble-rise {
+  0% { opacity: 0; transform: translate3d(var(--bubble-drift-start), 0, 0) scale(0.8); }
+  10% { opacity: 0.24; }
+  38% { transform: translate3d(var(--bubble-drift-mid), -38vh, 0) scale(0.96); }
+  68% { transform: translate3d(var(--bubble-drift-start), -76vh, 0) scale(1.04); }
+  90% { opacity: 0.2; }
+  100% { opacity: 0; transform: translate3d(var(--bubble-drift-end), -115vh, 0) scale(1.1); }
+}
+
+@keyframes aero-bubble-rise-prominent {
+  0% { opacity: 0; transform: translate3d(var(--bubble-drift-start), 0, 0) scale(0.8); }
+  10% { opacity: 0.64; }
+  38% { transform: translate3d(var(--bubble-drift-mid), var(--bubble-rise-mid), 0) scale(0.96); }
+  68% { transform: translate3d(var(--bubble-drift-start), var(--bubble-rise-late), 0) scale(1.04); }
+  90% { opacity: 0.56; }
+  100% { opacity: 0; transform: translate3d(var(--bubble-drift-end), var(--bubble-rise), 0) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-bubbles span { animation: none; }
+}
+
+.theme-aero [class*="bg-white"],
+.theme-aero [class*="bg-slate-50"] {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(225, 250, 255, 0.56)) !important;
+  border-color: rgba(255, 255, 255, 0.82) !important;
+  box-shadow: 0 14px 34px rgba(16, 111, 145, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px);
+}
+
+.theme-aero [class*="border-slate-900"],
+.theme-aero [class*="border-crimson"] {
+  border-color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.theme-aero [class*="text-slate-950"],
+.theme-aero [class*="text-slate-800"],
+.theme-aero [class*="text-slate-700"],
+.theme-aero [class*="text-cougar"] {
+  color: #16465f !important;
+}
+
+.theme-aero [class~="text-crimson-600"],
+.theme-aero [class~="text-crimson-300"],
+.theme-aero [class~="dark:text-crimson-300"] {
+  color: #087eaa !important;
+}
+
+.theme-aero [class*="bg-crimson-600"] {
+  background-color: #0788ac !important;
+}
+
+.theme-aero [class*="hover:text-crimson"]:hover {
+  color: #075b7a !important;
+}
+
+.theme-aero [class*="hover:border-crimson"]:hover {
+  border-color: rgba(19, 143, 181, 0.72) !important;
+}
+
+.theme-aero [class*="hover:bg-crimson"]:hover {
+  background-color: rgba(77, 202, 226, 0.18) !important;
+}
+
+.theme-aero [class*="focus:ring-crimson"]:focus {
+  --tw-ring-color: #0788ac;
+  --tw-ring-offset-color: #d8fbff;
+}
+
+.theme-aero .eyebrow {
+  color: #087eaa;
+}
+
+.theme-aero header nav[class*="bg-white"] {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(224, 249, 255, 0.94)) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  color: #16465f !important;
+  box-shadow: 0 8px 22px rgba(16, 111, 145, 0.16), inset 0 1px 0 #fff !important;
+}
+
+.theme-aero header nav a {
+  color: #16465f !important;
+}
+
+.theme-aero header nav a:hover,
+.theme-aero header nav a:focus-visible {
+  background: transparent !important;
+  color: #087eaa !important;
+}
+
+.theme-aero header > a,
+.theme-aero header > button {
+  background: rgba(250, 255, 255, 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  color: #075270 !important;
+  box-shadow: 0 8px 20px rgba(16, 111, 145, 0.2), inset 0 1px 0 #fff !important;
+}
+
+.theme-aero a.inline-flex {
+  border-color: rgba(255, 255, 255, 0.95) !important;
+  background: linear-gradient(180deg, #ffffff, #a8edfa) !important;
+  color: #075270 !important;
+  box-shadow: 0 8px 20px rgba(9, 111, 149, 0.2), inset 0 1px 0 #fff !important;
+}
+
+.theme-aero a.inline-flex:first-child,
+.theme-aero a.inline-flex:hover {
+  background: linear-gradient(180deg, #f4ffff, #7bd8ed) !important;
+}
+
+.theme-aero .bg-crimson-700\/90 {
+  background: linear-gradient(145deg, rgba(18, 137, 176, 0.92), rgba(7, 91, 133, 0.9)) !important;
+}
+
+.theme-aero .bg-crimson-700\/90 [class~="text-crimson-300"] {
+  color: #e8fbff !important;
 }

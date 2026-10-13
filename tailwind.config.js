@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Frutiger", "Frutiger LT Std", "Frutiger Neue", "Arial", "sans-serif"],
       },
       colors: {
         ink: {
