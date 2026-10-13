@@ -4,15 +4,16 @@ const links = {
     github: "https://github.com/caJoey",
     linkedin: "https://www.linkedin.com/in/joey-capps/",
     email: "mailto:joeylcapps@gmail.com",
+    phone: "tel:+12069306019",
     resume: "/JoeyCappsResume.pdf",
 };
 
-const skills = ["Python", "JavaScript", "React", "Node.js", "SQL", "Azure", "C", "C++", "Java"];
+const skills = ["Python", "C++", "Golang", "HTML", "CSS", "JavaScript", "Node.js", "React", "SQL", "Azure", "AWS", "C", "Java"];
 
 const resumeEducation = [
     {
         school: "Washington State University",
-        date: "May 2027",
+        date: "December 2026",
         location: "Pullman, WA",
         degree: "M.S. Computer Science - Mahmoud Dillsi Graduate Fellowship",
         details: ["GPA: 4.0 / 4.0", "Relevant coursework: Algorithms, ML, AI, Advanced Programming Languages"],
@@ -22,7 +23,7 @@ const resumeEducation = [
         date: "December 2024",
         location: "Bellingham, WA",
         degree: "B.S. Computer Science",
-        details: ["Relevant coursework: Operating Systems, Object Oriented Design, Databases, Machine Learning"],
+        details: [],
     },
 ];
 
@@ -30,20 +31,23 @@ const resumeExperience = [
     {
         title: "Software Development Engineer Intern",
         org: "Amazon Web Services",
-        date: "May 2026 - August 2026",
+        date: "June 2026 - September 2026",
         location: "Seattle, WA",
-        bullets: ["Joining the Elastic Block Store (EBS) team for an SDE internship at AWS using C++"],
+        bullets: [
+            "Joined the Elastic Block Store (EBS) server team for the summer and learned about virtual HDDs and SSDs.",
+            "Built two load balancers in C++ and tested them using Golang, reducing max latency on key disk writes by 98%.",
+        ],
     },
     {
         title: "Founding Software Engineer",
         org: "Early-stage educational platform startup",
-        date: "May 2025 - May 2026",
+        date: "May 2025 - Present",
         location: "Remote",
         bullets: [
             "Built a subscription-based educational platform that allows people to create and share modularized courses.",
-            "Led backend system architecture and development using PostgreSQL, Node.js, Express.js, Socket.IO, React, RESTful APIs, HTTP, and Azure.",
-            "Implemented interactive frontend features using React and TailwindCSS.",
-            "Achieved 80%+ backend test coverage with Vitest, Supertest, and ephemeral Dockerized PostgreSQL instances integrated into GitHub Actions.",
+            "Leading backend system architecture and development using PostgreSQL, Node.js, Express.js, Socket.IO, React, RESTful APIs, HTTP, and Azure.",
+            "Implemented a dynamic frontend using React and TailwindCSS.",
+            "Achieved 80%+ backend test coverage with Vitest, Supertest, and ephemeral Dockerized PostgreSQL instances, integrated into a CI/CD pipeline via GitHub Actions.",
             "Authored technical documentation and grew the engineering team to 3 developers.",
         ],
     },
@@ -55,7 +59,7 @@ const resumeInvolvement = [
         date: "September 2022 - December 2024",
         location: "Bellingham, WA",
         bullets: [
-            "Placed 3rd in Washington and 34th in the PNW at ICPC 2024 Division 1 using Python.",
+            "Placed 3rd in Washington and 34th in the PNW at ICPC 2024 Division 1 using Python, earning WWU's first Division 1 medal and its best ICPC result since 2004.",
             "Placed 1st in Washington and 5th in the Pacific Northwest at ICPC PNW 2022 Division 2 using Java.",
         ],
     },
@@ -63,23 +67,23 @@ const resumeInvolvement = [
 
 const stats = [
     ["4.0", "Graduate GPA at Washington State University"],
-    ["3", "Developers grown on an early-stage engineering team"],
-    ["3rd", "Washington ICPC Division 1 placement in 2024"],
+    ["98%", "Lower max latency on key EBS disk writes"],
+    ["3", "Developers on an early-stage engineering team"],
 ];
 
 const timeline = [
     {
-        date: "May 2027",
+        date: "December 2026",
         title: "M.S. Computer Science - Washington State University",
         body: "Mahmoud Dillsi Graduate Fellowship. Coursework in algorithms, ML, AI, and programming languages.",
     },
     {
-        date: "May 2026 - Aug 2026",
+        date: "June 2026 - September 2026",
         title: "Software Development Engineer Intern - Amazon Web Services",
-        body: "Joining the Elastic Block Store team for a summer SDE internship.",
+        body: "Built two load balancers in C++ and tested them using Golang for the Elastic Block Store server team, reducing max latency on key disk writes by 98%.",
     },
     {
-        date: "May 2025 - May 2026",
+        date: "May 2025 - Present",
         title: "Founding Software Engineer - Educational Platform Startup",
         body: "Built a subscription-based course platform, led backend architecture, integrated CI/CD, and helped grow the engineering team to three developers.",
     },
@@ -87,34 +91,31 @@ const timeline = [
 
 const projects = [
     {
-        title: "Poker Hand Replayer",
-        stack: "JavaScript - HTML - CSS",
-        href: "https://github.com/caJoey/Poker_Hand_Replayer",
-        body: "A browser-based Texas Hold'Em hand history visualizer that accepts standard online poker hand text and steps through each action with play, pause, reset, and next controls.",
-    },
-    {
-        title: "Card Counting Simulator",
-        stack: "Java",
-        href: "https://github.com/caJoey/Card_Counting_Simulator",
-        body: "A blackjack simulation that models card counting and gameplay, prints hand summaries with count information, and supports edge analysis using test output.",
+        title: "Fog of War Chess",
+        date: "February 2026 - May 2026",
+        stack: "Flask - React - Socket.IO",
+        href: "https://github.com/caJoey/Fog-of-War-Chess",
+        body: "Built a 5x5 Fog of War chess frontend where clients play an imperfect-information chess variant against custom AI agents. Flask, React, and Socket.IO provide real-time board updates as moves are made.",
     },
     {
         title: "Poker Online",
-        stack: "React - Node.js - Socket.IO",
+        date: "January 2025 - April 2025",
+        stack: "Node.js - React - Socket.IO - Express.js",
         href: "https://github.com/caJoey/Poker_Online",
-        body: "A real-time No Limit Texas Hold'Em web app supporting private Sit & Go tournaments for up to nine players, with server-processed actions and Socket.IO table updates.",
+        body: "A real-time Texas Hold'Em poker website for playing Sit & Go games with fake money.",
     },
     {
-        title: "Batting Average Prediction",
-        stack: "Python - Pandas - BeautifulSoup - Playwright",
-        href: "https://github.com/caJoey/Batting_Averge_Prediction",
-        body: "A data science and machine learning project that scrapes MLB stats, cleans player data, engineers features, and compares batting average predictions against projection systems.",
+        title: "Covid Memories",
+        date: "January 2024 - December 2024",
+        stack: "Node.js - Express.js - MongoDB - Azure",
+        body: "A website showcasing an audio library of interviews about the COVID-19 pandemic. Collaborated in a team of four across backend and frontend development, maintenance, and weekly planning.",
     },
     {
-        title: "Fog of War Chess",
-        stack: "Python - React - Flask - JavaScript",
-        href: "https://github.com/caJoey/Fog-of-War-Chess",
-        body: "A 5x5 dark chess web app with simplified minichess rules, fog-of-war visibility, random and minimax agents, and evaluation scripts for head-to-head matches.",
+        title: "Poker Hand Replayer",
+        date: "March 2023",
+        stack: "JavaScript - HTML - CSS",
+        href: "https://github.com/caJoey/Poker_Hand_Replayer",
+        body: "A browser-based Texas Hold'em hand history visualizer that steps through each action with playback controls.",
     },
 ];
 
@@ -394,13 +395,13 @@ function App() {
             <main>
                 <section className="section grid items-center gap-10 pt-8 lg:min-h-[calc(100vh-82px)] lg:grid-cols-[1.04fr_0.96fr] lg:gap-20 lg:pt-9">
                     <div>
-                        <p className="eyebrow">Computer Science Graduate Student</p>
+                        <p className="eyebrow">Software Engineer</p>
                         <h1 className="mb-6 max-w-[11ch] text-[clamp(3rem,17vw,4.6rem)] font-extrabold leading-[0.92] sm:text-[clamp(3.2rem,9vw,6.8rem)]">
                             Joey Capps
                         </h1>
                         <p className="max-w-2xl text-lg text-slate-800 dark:text-slate-100 sm:text-xl">
-                            Software engineer focused on backend architecture, interactive products, and polished full-stack
-                            experiences across React, Node.js, Flask, Socket.IO, PostgreSQL, MongoDB, and Azure.
+                            Software engineer and Washington State University computer science graduate student building
+                            reliable backend systems and real-time products.
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
                             <ButtonLink href="#projects" variant="primary">
@@ -418,6 +419,9 @@ function App() {
                             <a className="rounded-lg border border-slate-900/10 bg-white px-3 py-2 text-slate-950 shadow-sm transition-all hover:-translate-y-0.5 hover:border-crimson-600 hover:bg-[#fff7f4] hover:shadow-md dark:border-white/10 dark:bg-[#1b1b1b] dark:text-white dark:hover:border-crimson-300 dark:hover:bg-[#25171a]" href={links.email}>
                                 Email
                             </a>
+                            <a className="rounded-lg border border-slate-900/10 bg-white px-3 py-2 text-slate-950 shadow-sm transition-all hover:-translate-y-0.5 hover:border-crimson-600 hover:bg-[#fff7f4] hover:shadow-md dark:border-white/10 dark:bg-[#1b1b1b] dark:text-white dark:hover:border-crimson-300 dark:hover:bg-[#25171a]" href={links.phone}>
+                                (206) 930-6019
+                            </a>
                         </div>
                     </div>
 
@@ -425,8 +429,8 @@ function App() {
                         <HeroCanvas isDark={isDark} />
                         <div className="absolute bottom-3 left-3 right-3 grid gap-1 rounded-lg border border-crimson-300/40 bg-crimson-700/90 p-3 text-sm text-white shadow-lg backdrop-blur-xl dark:border-crimson-300/30 dark:bg-[#1b1b1b]/92 sm:bottom-4 sm:left-auto sm:right-4 sm:max-w-[calc(100%-32px)] sm:p-4 sm:text-base">
                             <span className="text-xs font-bold text-crimson-300 dark:text-crimson-300">Current Focus</span>
-                            <strong>AWS EBS SDE Internship</strong>
-                            <small className="font-bold text-white/90">Seattle, WA - Summer 2026</small>
+                            <strong>Backend systems &amp; real-time products</strong>
+                            <small className="font-bold text-white/90">C++ - Golang - React</small>
                         </div>
                     </div>
                 </section>
@@ -447,14 +451,14 @@ function App() {
                     </div>
                     <div className="max-w-3xl space-y-4 text-slate-800 dark:text-slate-100">
                         <p>
-                            Joey is pursuing an M.S. in Computer Science at Washington State University after earning a B.S.
-                            in Computer Science from Western Washington University. His work spans cloud-hosted learning tools,
-                            real-time games, backend services, and user-facing React interfaces.
+                            Joey is pursuing an M.S. in Computer Science at Washington State University after earning his
+                            B.S. at Western Washington University. He builds backend systems and full-stack products,
+                            from cloud-hosted learning tools to real-time games.
                         </p>
                         <p>
-                            He has led backend architecture for an early-stage educational platform, built CI-backed test suites
-                            with Dockerized PostgreSQL, and contributed across the stack with Node.js, Express, Socket.IO, React,
-                            TailwindCSS, MongoDB, and Azure.
+                            At AWS, he built two EBS load balancers in C++ and tested them using Golang, reducing max latency
+                            on key disk writes by 98%. He also leads backend development for an educational startup, using PostgreSQL, Node.js,
+                            React, and Azure.
                         </p>
                     </div>
                 </section>
@@ -481,9 +485,12 @@ function App() {
                             <article className="flex min-h-[240px] flex-col justify-between rounded-lg border border-slate-900/10 bg-white p-5 shadow-soft transition-all duration-200 hover:-translate-y-1.5 hover:border-crimson-600 hover:shadow-xl hover:shadow-crimson-600/10 dark:border-white/10 dark:bg-[#1b1b1b] dark:shadow-none dark:hover:border-crimson-300 dark:hover:bg-[#201719] sm:p-6 xl:min-h-[310px]" key={project.title}>
                                 <div className="mb-9 flex flex-col gap-2 text-sm font-bold text-slate-700 dark:text-slate-100">
                                     <span>{project.stack}</span>
-                                    <a className="w-fit text-crimson-600 hover:text-crimson-500 dark:text-crimson-300" href={project.href} target="_blank" rel="noreferrer">
-                                        GitHub
-                                    </a>
+                                    <span>{project.date}</span>
+                                    {project.href && (
+                                        <a className="w-fit text-crimson-600 hover:text-crimson-500 dark:text-crimson-300" href={project.href} target="_blank" rel="noreferrer">
+                                            GitHub
+                                        </a>
+                                    )}
                                 </div>
                                 <div>
                                     <h3 className="mb-3 text-xl font-extrabold">{project.title}</h3>
@@ -498,16 +505,16 @@ function App() {
                     <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
                         <div className="max-w-3xl">
                             <p className="eyebrow">Resume</p>
-                            <h2 className="heading">Experience, education, and technical strengths.</h2>
+                            <h2 className="heading">Experience, education, and technical strengths</h2>
                             <p className="text-slate-800 dark:text-slate-100">
-                                A web version of the resume with the original PDF available for download.
+                                A web version of the resume with the original PDF available for download
                             </p>
                         </div>
                         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
                             <ButtonLink href={links.resume} variant="primary" download>
                                 Download PDF
                             </ButtonLink>
-                            <ButtonLink href={links.resume}>Open PDF</ButtonLink>
+                            <ButtonLink href={links.resume}>View PDF</ButtonLink>
                         </div>
                     </div>
 
@@ -569,7 +576,6 @@ function App() {
                 <section className="section grid items-center gap-8 border-t border-slate-900/10 dark:border-white/10 lg:grid-cols-[1fr_auto]" id="contact">
                     <div>
                         <p className="eyebrow">Contact</p>
-                        <h2 className="heading">Let's build something sharp.</h2>
                         <p className="max-w-2xl text-slate-800 dark:text-slate-100">
                             Open to software engineering conversations, collaborative projects, and roles involving backend
                             systems, real-time applications, or full-stack product development.
