@@ -262,51 +262,60 @@ function HeroCanvas({ isDark }) {
             drawDune(height * 0.72, 30, isDark ? "rgba(90, 38, 35, 0.72)" : "rgba(171, 91, 45, 0.84)", 2.4);
             drawDune(height * 0.87, 24, isDark ? "rgba(26, 18, 17, 0.95)" : "rgba(98, 55, 38, 0.92)", 4.2, "rgba(255,255,255,0.10)");
 
-            const drawJawa = (x, y, scale) => {
-                const robe = isDark ? "#15100d" : "#3a2318";
-                const hood = isDark ? "#0d0a08" : "#24150f";
-                const eye = "#ffd166";
+            const drawPanicPete = (x, y, scale, seed) => {
+                const bob = Math.sin(phase * 2 + seed) * scale;
+                const squeeze = (Math.sin(phase * 1.1 + seed) + 1) / 2;
+                const skin = isDark ? "#e8a47f" : "#f3b78f";
+                const outline = isDark ? "#9c5c4a" : "#bb775d";
 
-                ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
                 ctx.beginPath();
-                ctx.ellipse(x, y + scale * 28, scale * 16, scale * 5, 0, 0, Math.PI * 2);
+                ctx.ellipse(x, y + scale * 39, scale * 20, scale * 5, 0, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = robe;
+                // The toy is a single squat, soft-rubber figure rather than a robed character.
+                const bodyGradient = ctx.createLinearGradient(x - scale * 17, y, x + scale * 17, y + scale * 42);
+                bodyGradient.addColorStop(0, isDark ? "#f0b18c" : "#ffd0a8");
+                bodyGradient.addColorStop(0.55, skin);
+                bodyGradient.addColorStop(1, isDark ? "#cb8065" : "#dc9874");
+                ctx.fillStyle = bodyGradient;
                 ctx.beginPath();
-                ctx.moveTo(x, y);
-                ctx.quadraticCurveTo(x - scale * 18, y + scale * 18, x - scale * 13, y + scale * 42);
-                ctx.lineTo(x + scale * 13, y + scale * 42);
-                ctx.quadraticCurveTo(x + scale * 18, y + scale * 18, x, y);
-                ctx.closePath();
+                ctx.ellipse(x, y + scale * 23 + bob, scale * (17 - squeeze), scale * 17, 0, 0, Math.PI * 2);
                 ctx.fill();
-
-                ctx.fillStyle = hood;
-                ctx.beginPath();
-                ctx.moveTo(x, y - scale * 9);
-                ctx.quadraticCurveTo(x - scale * 14, y + scale * 8, x - scale * 10, y + scale * 24);
-                ctx.lineTo(x + scale * 10, y + scale * 24);
-                ctx.quadraticCurveTo(x + scale * 14, y + scale * 8, x, y - scale * 9);
-                ctx.closePath();
-                ctx.fill();
-
-                ctx.fillStyle = eye;
-                ctx.beginPath();
-                ctx.arc(x - scale * 4, y + scale * 11, scale * 1.8, 0, Math.PI * 2);
-                ctx.arc(x + scale * 4, y + scale * 11, scale * 1.8, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.strokeStyle = isDark ? "#2b1a14" : "#5b3525";
-                ctx.lineWidth = Math.max(1, scale * 1.2);
-                ctx.beginPath();
-                ctx.moveTo(x - scale * 12, y + scale * 24);
-                ctx.lineTo(x + scale * 12, y + scale * 24);
+                ctx.strokeStyle = outline;
+                ctx.lineWidth = scale;
                 ctx.stroke();
+
+                // Round head with solid blue eyes set directly into the face.
+                ctx.fillStyle = bodyGradient;
+                ctx.beginPath();
+                ctx.ellipse(x, y + bob, scale * 15, scale * 16, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = outline;
+                ctx.lineWidth = scale;
+                ctx.stroke();
+
+                ctx.fillStyle = "#2583d5";
+                ctx.beginPath();
+                ctx.arc(x - scale * 5, y - scale * 5 + bob, scale * 4, 0, Math.PI * 2);
+                ctx.arc(x + scale * 5, y - scale * 5 + bob, scale * 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Red ears and nose pop outward as the figure squeezes.
+                ctx.fillStyle = "#e94c42";
+                ctx.beginPath();
+                ctx.arc(x - scale * 19, y + bob, scale * 4.5, 0, Math.PI * 2);
+                ctx.arc(x + scale * 19, y + bob, scale * 4.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = "#ed5145";
+                ctx.beginPath();
+                ctx.ellipse(x, y + scale * (5 + squeeze * 2) + bob, scale * 4, scale * 3.5, 0, 0, Math.PI * 2);
+                ctx.fill();
             };
 
-            drawJawa(width * 0.22, height * 0.72, Math.max(0.75, width / 620));
-            drawJawa(width * 0.29, height * 0.75, Math.max(0.62, width / 760));
-            drawJawa(width * 0.72, height * 0.7, Math.max(0.7, width / 700));
+            drawPanicPete(width * 0.22, height * 0.72, Math.max(0.75, width / 620), 1);
+            drawPanicPete(width * 0.29, height * 0.75, Math.max(0.62, width / 760), 2);
+            drawPanicPete(width * 0.72, height * 0.7, Math.max(0.7, width / 700), 3);
 
             frameRef.current = requestAnimationFrame(draw);
         };
